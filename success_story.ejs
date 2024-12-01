@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Success Stories</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-color: #000000; /* Changed from blue to black */
+            --secondary-color: #2ecc71;
+            --text-color: #34495e;
+            --background-color: #ecf0f1;
+            --card-background: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease-out;
+            position: relative;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 20px;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        h1 {
+            color: var(--primary-color); /* Changed to black */
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+
+        /* Sidebar (dashboard) styling */
+        .sidebar {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            width: 350px;
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            z-index: 2;
+            background-color: white;
+            border-radius: 30px;
+            padding: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar.show {
+            display: flex; /* Show sidebar when .show class is added */
+            opacity: 1;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none;
+            padding: 15px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .nav-links a i {
+            margin-right: 15px;
+        }
+
+        .nav-links a:hover {
+            background-color: #d9e1e9;
+            padding-left: 10px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        input, select {
+            padding: 10px 15px;
+            border: 2px solid #000; /* Changed border color to black */
+            border-radius: 25px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3); /* Updated focus shadow to black */
+        }
+
+        .search {
+            flex-grow: 1;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Reduced story card size */
+            gap: 20px; /* Reduced gap between cards */
+            animation: fadeIn 1s ease-out;
+        }
+
+        .story-card {
+            background-color: var(--card-background);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .story-card img {
+            width: 100%;
+            height: 250px; /* Reduced image height to match smaller card size */
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .story-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .story-content {
+            padding: 15px; /* Reduced padding inside story content */
+        }
+
+        .story-content h3 {
+            margin-top: 0;
+            color: var(--primary-color); /* Changed to black */
+            font-size: 1.2em; /* Slightly reduced font size */
+        }
+
+        .story-meta {
+            color: var(--secondary-color);
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .story-position {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .story-achievement {
+            font-style: italic;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <header class="header">
+            <div class="logo" id="logo">
+                <img src="images/transparent_logo.png" alt="Logo">
+            </div>
+            <h1>Alumni Success Stories</h1> <!-- Text color changed to black -->
+            
+            <!-- Dashboard (Sidebar) -->
+            <div class="sidebar" id="sidebar">
+                
+        <nav class="nav-links">
+            
+            <a href="/networking"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🤝</i>Networking Hub</a>
+            <br>
+            <a href="/jobportal"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💼</i>Job Portal</a>
+            <br>
+            <a href="/successstory"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📖</i>Success Stories</a>
+            <br>
+            <a href="/alumnidirectory"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📂</i>Alumni Directory</a>
+            <br>
+            <a href="/events"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📅</i>Events & Reunion</a>
+            <br>
+            <a href="/donationportal"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💰</i>Donation Portal</a>
+            <br>
+            <a href="/feedback"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📝</i>Feedback & Survey</a>
+            <div class="log-out">
+                <a href="/logout"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔓</i>Logout</a>
+            </div>
+        </nav>
+            </div>
+        </header>
+        
+        <div class="filters">
+            <input type="text" class="search" id="search-bar" placeholder="Search by name, year, or achievement">
+            <select id="industry-filter">
+                <option value="">All Industries</option>
+                <option value="technology">Technology</option>
+                <option value="finance">Finance</option>
+                <option value="medicine">Medicine</option>
+                <option value="arts">Arts</option>
+            </select>
+            <select id="decade-filter">
+                <option value="">All Decades</option>
+                <option value="2020">2020s</option>
+                <option value="2010">2010s</option>
+                <option value="2000">2000s</option>
+                <option value="1990">1990s</option>
+            </select>
+        </div>
+
+        <div class="story-grid">
+            <div class="story-card" data-industry="technology" data-decade="2020">
+                <img src="images/formal_profile_1.png" alt="Jane Doe">
+                <div class="story-content">
+                    <h3>Jane Doe</h3>
+                    <p class="story-meta">2015 | Technology</p>
+                    <p class="story-position">Software Engineer at Tech Innovations</p>
+                    <p class="story-achievement">Developed award-winning AI algorithm</p>
+                </div>
+            </div>
+            <div class="story-card" data-industry="finance" data-decade="2010">
+                <img src="images/formal_profile_2.png" alt="John Smith">
+                <div class="story-content">
+                    <h3>John Smith</h3>
+                    <p class="story-meta">2018 | Finance</p>
+                    <p class="story-position">Investment Banker at Global Investments</p>
+                    <p class="story-achievement">Led successful billion-dollar merger</p>
+                </div>
+            </div>
+            <div class="story-card" data-industry="medicine" data-decade="2020">
+                <img src="images/formal_profile_3.png" alt="Emily Brown">
+                <div class="story-content">
+                    <h3>Emily Brown</h3>
+                    <p class="story-meta">2020 | Medicine</p>
+                    <p class="story-position">Research Scientist at BioTech Labs</p>
+                    <p class="story-achievement">Published groundbreaking cancer research</p>
+                </div>
+            </div>
+            <div class="story-card" data-industry="non-profit" data-decade="2019">
+                <img src="images/formal_profile_5.png" alt="David Williams">
+                <div class="story-content">
+                    <h3>David Williams</h3>
+                    <p class="story-meta">2019 | Non-Profit</p>
+                    <p class="story-position">Program Director at Global Initiative</p>
+                    <p class="story-achievement">Launched education program reaching 10,000 children</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

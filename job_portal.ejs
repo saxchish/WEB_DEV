@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background-color: #00224d;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .headingtitle {
+            width: 100%;
+            background-color: #00224d;
+            color: white;
+            padding: 85px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .headingtitle h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #00224d;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 10px;
+            z-index: 100;
+        }
+
+        .sidebar .logo {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .sidebar .logo img {
+            width: 50px;
+        }
+
+        .sidebar .logo h2 {
+            color: white;
+            margin-top: 10px;
+        }
+
+        .nav-links {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .nav-links a i {
+            margin-right: 15px;
+        }
+
+        .nav-links a:hover {
+            background-color: #003366;
+            padding-left: 10px;
+        }
+
+        .log-out {
+            margin-top: auto;
+        }
+
+        .main-content {
+            height: 580px;
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .container {
+            padding: 20px;
+            margin-top: 50px;
+            transform: scale(1.4);
+        }
+
+        .search-bar input {
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-btn {
+            padding: 10px 20px;
+            background-color: #5a67d8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-btn:hover {
+            background-color: #b7b7b9;
+        }
+
+        .feedback-modal {
+            background-color: #92b5ea;
+            border-radius: 15px;
+            padding: 20px;
+            height: 500px;
+            width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: fixed;
+            right: 15%;
+            bottom: 7%;
+            margin-top: 100px;
+        }
+        .nav-links{
+            border-radius: 15px;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <!-- New Heading -->
+    <div class="headingtitle">
+        <h1>JOB PORTAL</h1>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="images/nexuslogo.jpg" alt="Nexus Logo">
+            <a href="/dashboard" style="text-decoration: none;">
+                <h2>NEXUS</h2>
+            </a>
+        </div>
+        <nav class="nav-links" style="background-color: #003366;">
+            <br><br><a href="/networking"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🤝</i>Networking Hub</a>
+            <br>
+            <a href="/jobportal"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💼</i>Job Portal</a>
+            <br>
+            <a href="successstory"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📖</i>Success Stories</a>
+            <br>
+            <a href="/alumnidirectory"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📂</i>Alumni Directory</a>
+            <br>
+            <a href="/events"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📅</i>Events & Reunion</a>
+            <br>
+            <a href="/donationportal"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💰</i>Donation Portal</a>
+            <br>
+            <a href="/feedback"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📝</i>Feedback & Survey</a>
+            <div class="log-out">
+                <a href="/logout"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔓</i>Logout</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" style="background-image: url('images/jobportal.png');">
+        <div class="container" style="margin-top: 230px;">
+            <div class="content">
+                <h2 style="text-align: center;">The Easiest Way to Get Your New Job</h2><br>
+                <div class="tagline" style="text-align: center;">Find jobs that match your skills</div><br><br>
+                <div class="search-bar" style="text-align: center;">
+                    <input type="text" id="keyword" placeholder="Keyword">
+                    <input type="text" id="location" placeholder="Location">
+                    <input type="text" id="experience" placeholder="Experience">
+                    <button class="search-btn" onclick="searchJobs()">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+</body>
+</html>

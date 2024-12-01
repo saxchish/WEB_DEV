@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Dashboard</title>
+    <style>
+        /* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d2e6ec;
+}
+
+/* Header */
+header {
+    position: relative;
+}
+
+/* Menu Icon */
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.menu-icon .line {
+    width: 20px;
+    height: 3px;
+    background-color: #000;
+    margin: 2px 0;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 17vw; /* Adjust the width to cover 15% of the viewport width */
+    height: 100%;
+    background-color: #00224d;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: fixed; /* Ensure the sidebar stays fixed on the left side */
+    top: 0;
+    left: 0;
+    margin: 0; /* Remove margin to fit the width adjustment */
+}
+
+.sidebar .logo {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.sidebar .logo img {
+    width: 50px;
+}
+
+
+.nav-links {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #1e4263;
+    border-radius: 30px;
+}
+.log-out
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #1e4263;
+}
+.sidebar .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.sidebar .nav-links a i {
+    margin-right: 15px;
+}
+
+.sidebar .nav-links a:hover {
+    background-color: #003366;
+    padding-left: 10px;
+}
+/* Hero Section */
+.hero {
+    background-image: url('Your Best _Alumni_ Network.jpg');
+    background-size: 1280px 500px;
+    ;
+    background-position: top;
+    height: 450px;
+    width: 1300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-left: 250px;
+}
+
+/* Profile Cards */
+.profiles {
+    
+    justify-content: space-evenly;
+    padding: 40px;
+    
+}
+
+/* Profile card container */
+.profile-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    display: flex; /* Enable flexbox */
+    justify-content: space-between; /* Ensure even spacing between elements */
+    align-items: center; /* Align items vertically in the center */
+    width: 350px; /* Adjust width to fit the layout */
+    margin-bottom: 20px; /* Space between profile cards */
+}
+
+/* Profile image */
+.profile-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+/* Profile text content */
+.profile-card h3, .profile-card p {
+    margin: 0;
+}
+
+/* Profile text section (name and title) */
+.profile-info {
+    flex-grow: 1; /* Allows the text to take up available space */
+}
+
+/* Profile icons container */
+.profile-icons {
+    display: flex;
+    flex-direction: column; /* Stack the icons vertically */
+    font-size: 20px;
+    margin-left: 20px; /* Space between text and icons */
+}
+
+/* Individual icons */
+.profile-icons span {
+    margin-bottom: 10px; /* Space between icons */
+    cursor: pointer; /* Changes cursor on hover */
+}
+
+.profile-icons span:last-child {
+    margin-bottom: 0; /* Remove margin for the last icon */
+}
+
+
+/* Chat Popup */
+.chat-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.chat-popup.hidden {
+    display: none;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #1e4263;
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+.chat-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat-body {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+}
+
+.chat-footer {
+    padding: 10px;
+    display: flex;
+}
+
+.chat-footer input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.chat-footer button {
+    margin-left: 10px;
+    padding: 10px;
+    background-color: #1e4263;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+/* Style for the search bar */
+.search-bar {
+    display: flex;
+    background-color: white;
+    border-radius: 50px; /* Makes the input oval */
+    padding: 10px; /* Increases the padding for a larger input box */
+    width: 300px; /* Increases the width of the search bar */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adds a soft shadow for depth */
+}
+
+.search-bar input {
+    border: none;
+    padding: 12px 20px; /* Makes the input field larger */
+    border-radius: 50px; /* Oval shape */
+    width: 100%; /* Ensures the input field takes full width */
+    font-size: 16px;
+    outline: none; /* Removes the outline */
+}
+
+.search-bar button {
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 10px; /* Adds space between input and button */
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3; /* Changes color on hover */
+}
+.chat-icon{
+    cursor: pointer;
+}
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.profiles{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.profile-card{
+    margin-right: 1rem;
+    margin-left: 30px;
+}
+.p1{
+    margin-left: 16rem;
+}
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo">
+            <br><br><br><img src="images/nexuslogo.jpg" alt="Nexus Logo">
+            <br><a href="/dashboard" style="text-decoration: none;">
+                <h2 style="color: white;">NEXUS</h2>
+            </a>
+        </div>
+        <nav class="nav-links">
+            
+            <a href="/networking"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🤝</i>Networking Hub</a>
+            <br>
+            <a href="/jobportal"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💼</i>Job Portal</a>
+            <br>
+            <a href="successstory"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📖</i>Success Stories</a>
+            <br>
+            <a href="/alumnidirectory"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📂</i>Alumni Directory</a>
+            <br>
+            <a href="/events"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📅</i>Events & Reunion</a>
+            <br>
+            <a href="/donationportal"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💰</i>Donation Portal</a>
+            <br>
+            <a href="/feedback"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📝</i>Feedback & Survey</a>
+            <div class="log-out">
+                <a href="/logout"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔓</i>Logout</a>
+            </div>
+        </nav>
+    </div>
+
+    <main class="main-container">
+
+        <section class="hero";>
+            <pre style="color: rgb(100, 96, 96);margin-top: 300px;margin-right: 700px;margin-left: 80px;font-size:30px ;"><br>Empowering Lifelong Connections <br> and Career Growth</pre>
+            <br><br>
+            <div class="search-bar" style="margin-right: -900px;margin-top: -105px;;" >
+                <input type="text" placeholder="Search by name..." id="search-input">
+                <button id="search-btn">🔍</button>
+            </div>
+        </section>
+        <section class="profiles p1" id="profileSection">
+            <div class="profile-card" data-name="Abhijeet K. Tiwari">
+                <img src="images/t3.jpg" alt="Abhijeet K. Tiwari">
+                <div class="profile-info">
+                    <h3>Abhijeet K. Tiwari</h3>
+                    <p>Software Engineer at TCS</p>
+                </div>
+                <div class="profile-icons">
+                    <span>📋</span>
+                    <span>📎</span>
+                    <span class="chat-icon" data-name="Abhijeet K. Tiwari" data-img="t1.png">💬</span>
+                </div>
+            </div>
+            <div class="profile-card" data-name="Sachin Singh">
+                <img src="images/t1.png" alt="Sachin Singh">
+                <div class="profile-info">
+                    <h3>Sachin Singh</h3>
+                    <p>Software Engineer at TCS</p>
+                </div>
+                <div class="profile-icons">
+                    <span>📋</span>
+                    <span>📎</span>
+                    <span class="chat-icon" data-name="Sachin Singh" data-img="t2.png">💬</span>
+                </div>
+            </div>
+            <div class="profile-card" data-name="Shruti Keshri">
+                <img src="images/t2.png" alt="Shruti Keshri">
+                <div class="profile-info">
+                    <h3>Shruti Keshri</h3>
+                    <p>Software Engineer at HP</p>
+                </div>
+                <div class="profile-icons">
+                    <span>📋</span>
+                    <span>📎</span>
+                    <span class="chat-icon" data-name="Shruti Keshri" data-img="t3.png">💬</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Main content -->
+    
+</main>
+
+<!-- Chat Pop-up Section -->
+<div class="chat-popup hidden" id="chatPopup">
+    <div class="chat-header">
+        <img src="" alt="" id="chatImg">
+        <span id="chatName"></span>
+        <button id="closeChat">X</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-footer">
+        <input type="text" id="chatInput" placeholder="Type your message...">
+        <button id="sendChat">Send</button>
+    </div>
+</div>
+
+
+</body>
+</html>

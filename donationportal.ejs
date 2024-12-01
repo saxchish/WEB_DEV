@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Portal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #3498db;
+            --text-color: #34495e;
+            --background-color: #f4f4f4;
+            --card-background: #ffffff;
+            --hover-color: #1abc9c;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .donation-form {
+            background-color: var(--card-background);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .donation-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .donation-form h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        label {
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 2px solid var(--primary-color);
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+
+        .donation-amounts {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .donation-amount {
+            background-color: var(--card-background);
+            border: 2px solid var(--primary-color);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            flex: 1;
+            margin: 0 10px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .donation-amount:hover {
+            background-color: var(--hover-color);
+            color: #fff;
+            border-color: var(--hover-color);
+        }
+
+        .donation-options {
+            margin-bottom: 30px;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .payment-method {
+            flex: 1;
+            padding: 10px;
+            background-color: var(--card-background);
+            border-radius: 10px;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .payment-method:hover {
+            background-color: var(--hover-color);
+            color: #fff;
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: var(--hover-color);
+        }
+
+        .donation-history {
+            margin-top: 60px;
+            text-align: left;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .donation-history h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .donation-history-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .donation-history-item {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .donation-history-item:hover {
+            background-color: var(--hover-color);
+            color: #fff;
+        }
+
+        /* Logo styling */
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 3;
+        }
+
+        .logo img {
+            width: 80px;
+            height: auto;
+            cursor: pointer;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: absolute;
+            left: 0;
+            top: 80px;
+            width: 350px;
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            z-index: 2;
+            background-color: white;
+            border-radius: 30px;
+            padding: 20px;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar.show {
+            display: flex; /* Show sidebar when .show class is added */
+            opacity: 1;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none;
+            padding: 15px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .nav-links a i {
+            margin-right: 15px;
+        }
+
+        .nav-links a:hover {
+            background-color: #d9e1e9;
+            padding-left: 10px;
+        }
+
+        .icon {
+            font-size: 1.5em;
+        }
+
+        .log-out a {
+            font-weight: bold;
+            color: var(--secondary-color);
+            background-color: #fff;
+        }
+
+        .log-out a:hover {
+            background-color: var(--hover-color);
+            color: #fff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo" onmouseover="showSidebar()" onmouseout="hideSidebar()">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+
+        <!-- Sidebar Section -->
+        <div class="sidebar" id="sidebar">
+                
+            <nav class="nav-links">
+                
+                <a href="/networking"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🤝</i>Networking Hub</a>
+                <br>
+                <a href="/jobportal"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💼</i>Job Portal</a>
+                <br>
+                <a href="/successstory"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📖</i>Success Stories</a>
+                <br>
+                <a href="/alumnidirectory"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📂</i>Alumni Directory</a>
+                <br>
+                <a href="/events"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📅</i>Events & Reunion</a>
+                <br>
+                <a href="/donationportal"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💰</i>Donation Portal</a>
+                <br>
+                <a href="/feedback"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📝</i>Feedback & Survey</a>
+                <div class="log-out">
+                    <a href="/logout"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔓</i>Logout</a>
+                </div>
+            </nav>
+                </div>
+
+                <h1>Support Our Cause</h1>
+                <p>Your donations make a huge difference. Help us create a better tomorrow by donating to one of our programs.</p>
+        
+                <div class="donation-form">
+                    <h2>Make a Donation</h2>
+                    
+                    <!-- Donation Type -->
+                    <label for="donation-type">Choose Donation Type:</label>
+                    <select id="donation-type">
+                        <option value="one-time">One-Time Donation</option>
+                        <option value="monthly">Monthly Recurring Donation</option>
+                        <option value="quarterly">Quarterly Recurring Donation</option>
+                        <option value="annual">Annual Recurring Donation</option>
+                    </select>
+        
+                    <!-- Donation Amount Section -->
+                    <div class="donation-amounts">
+                        <div class="donation-amount">$25</div>
+                        <div class="donation-amount">$50</div>
+                        <div class="donation-amount">$100</div>
+                        <div class="donation-amount">
+                            <input type="number" placeholder="Custom Amount">
+                        </div>
+                    </div>
+        
+                    <!-- Payment Methods -->
+                    <div class="payment-methods">
+                        <div class="payment-method">Credit Card</div>
+                        <div class="payment-method">PayPal</div>
+                        <div class="payment-method">Bank Transfer</div>
+                        <div class="payment-method">Apple Pay</div>
+                    </div>
+        
+                    <!-- Where to allocate the funds -->
+                    <label for="allocation">Allocate Your Donation:</label>
+                    <select id="allocation">
+                        <option value="scholarships">Scholarships</option>
+                        <option value="events">Events & Reunion</option>
+                        <option value="campus-development">Campus Development</option>
+                        <option value="research">Research</option>
+                    </select>
+        
+                    <!-- Submit Button -->
+                    <button class="submit-button">Donate Now</button>
+                </div>
+        
+                <!-- Donation History -->
+                <div class="donation-history">
+                    <h2>Your Donation History</h2>
+                    <ul class="donation-history-list">
+                        <li class="donation-history-item">March 2024 - $50 to Scholarships</li>
+                        <li class="donation-history-item">January 2024 - $100 to Research</li>
+                        <li class="donation-history-item">November 2023 - $25 to Campus Development</li>
+                    </ul>
+                </div>
+                
+        </div>
+    </div>
+
+    
+    
+    
+    
+</body>
+</html>

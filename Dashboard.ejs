@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Dashboard</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+    .animate-text {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #000000;
+        position: relative;
+        animation: move-text 3s ease-in-out ;
+    }
+
+    @keyframes move-text {
+        0% {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+        50% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+       
+    }
+    
+    body {
+        display: flex;
+        min-height: 100vh;
+    }
+    
+    .sidebar {
+        width: 250px;
+        background-color: #00224d;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    
+    .sidebar .logo {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    
+    .sidebar .logo img {
+        width: 50px;
+    }
+    
+    .sidebar {
+        position: relative;
+        width: 350px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .nav-links {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: #1e4263;
+        border-radius: 30px;
+    }
+    .log-out
+    {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: #1e4263;
+    }
+    .sidebar .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        padding: 15px 0;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        transition: background 0.3s;
+    }
+    
+    .sidebar .nav-links a i {
+        margin-right: 15px;
+    }
+    
+    .sidebar .nav-links a:hover {
+        background-color: #003366;
+        padding-left: 10px;
+    }
+    
+    .main-content {
+        flex-grow: 1;
+        padding: 20px;
+    }
+    
+    .top-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+    
+    .top-nav a {
+        margin-right: 20px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+    }
+    
+    .user-info {
+        display: flex;
+        align-items: center;
+        height: 20px;
+    }
+    
+    .user-info img {
+        text-align: right;
+        width: 60px;
+        border-radius: 50%;
+        margin-left: 10px;
+    }
+    
+    .welcome-banner {
+        height: 350px;
+        background-color: #e8f4ff;
+        padding: 15px;
+        border-radius: 10px;
+        margin: 15px 0;
+        text-align: left;
+    }
+    
+    .welcome-banner h1 {
+        font-size: 45px;
+        margin-bottom: 20px;
+        
+    }
+    
+    .welcome-banner p {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    
+    .welcome-banner img {
+        position: relative;
+        bottom: 200px; /* Align to the bottom */
+        right: 0;  /* Align to the right */
+        max-height: 100%; /* Ensures the image doesn't overflow the box */
+        object-fit: contain; /* Fits image within the space without losing aspect ratio */
+        width: auto;
+    }
+    .welcome-banner-image{
+        text-align: right;
+    }
+    
+    .events-news {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+    
+    .upcoming-events
+    {
+        width: 48%;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        
+    }
+    .news-alerts {
+        width: 55%;
+        background-color: #7091af;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .upcoming-events h2, .news-alerts h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+    
+    .calendar {
+        text-align: center;
+    }
+    
+    .calendar table {
+        width: 100%;
+        
+    }
+    
+    .calendar th, .calendar td {
+        
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .alert {
+        margin-bottom: 20px;
+    }
+    
+    .alert h3 {
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+    
+    .alert p {
+        font-size: 16px;
+    }
+    
+    /* Add smooth transition for zoom effect */
+    .zoom {
+        transition: transform 0.5s ease-in-out;
+    }
+    
+    /* Image when zoomed */
+    .zoomed {
+        transform: scale(1.5);
+    }
+    
+    /* Calendar Image */
+    .calendar img {
+        cursor: pointer;
+    }
+</style>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo">
+            <br><br><br><img src="images/nexuslogo.jpg" alt="Nexus Logo">
+            <br><a href="/dashboard" style="text-decoration: none;">
+                <h2 style="color: white;">NEXUS</h2>
+            </a>
+        </div>
+        <nav class="nav-links">
+            
+            <a href="/networking"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🤝</i>Networking Hub</a>
+            <br>
+            <a href="/jobportal"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💼</i>Job Portal</a>
+            <br>
+            <a href="successstory"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📖</i>Success Stories</a>
+            <br>
+            <a href="/alumnidirectory"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📂</i>Alumni Directory</a>
+            <br>
+            <a href="/events"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📅</i>Events & Reunion</a>
+            <br>
+            <a href="/donationportal"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💰</i>Donation Portal</a>
+            <br>
+            <a href="/feedback"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📝</i>Feedback & Survey</a>
+            <div class="log-out">
+                <a href="/logout"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔓</i>Logout</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <nav class="top-nav">
+                <div class="user-info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <h1>"Connecting the PAST, with the FUTURE</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="/profile"><img src="images/profile-pic.png" alt="Profile Picture"></a>
+                    <span>  Hello,<br>Shruti Keshri</span>
+                </div>
+            </nav>
+        </header>
+
+        <section class="welcome-banner">
+            <br><br><h1 class="animate-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome back, Shruti</h1><br>
+            <p class="animate-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Alumni are the living legacy of an institution,<br><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;carrying its spirit and values into the world."</p>
+            <div class="welcome-banner-image"><img src="images/College students sit on the grass in front of the university building.png" alt="Campus Image"></div>
+        </section>
+
+        <section class="events-news">
+            <div class="upcoming-events">
+                
+                <div class="calendar">
+                    
+                    <img id="calendarImg" class="zoom" src="images/calender.jpg" alt="Calendar" style="height: 200px;">
+
+                </div>
+            </div>
+            <div class="news-alerts">
+                <h2>News & Alerts</h2>
+                <div class="alert">
+                    <h3>🌟Alumni Contribution Campaign Launch</h3>
+                    <p>Announce the launch of a new fundraising campaign where alumni can contribute to specific college initiatives, scholarships, or infrastructure development.</p>
+                </div>
+                <div class="alert">
+                    <h3>🌟Annual Alumni Reunion</h3>
+                    <p>Promote the upcoming alumni reunion, including the date, location, and registration details.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+
+</body>
+<script src="Dashboard.js"></script>
+
+</html>

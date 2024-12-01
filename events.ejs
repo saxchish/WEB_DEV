@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Dashboard</title>
+    <!-- <link rel="stylesheet" href="dashboard.css"> -->
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 250px;
+            background-color: #00224d;
+            color: #fff;
+            position: fixed; /* Fixes the sidebar in place */
+            height: 100vh; /* Full viewport height */
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000; /* Ensure it stays on top */
+        }
+
+        .sidebar .logo {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .sidebar .logo img {
+            width: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            background-color: #1e4263;
+            border-radius: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 0;
+            font-size: 18px;
+            display: block;
+            transition: background 0.3s;
+            padding-left: 15px;
+        }
+
+        .nav-links a:hover {
+            background-color: #003366;
+        }
+
+        .log-out a {
+            padding-top: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .log-out a:hover {
+            background-color: #003366;
+        }
+
+        /* Main content area */
+        main {
+            margin-left: 250px; /* Space for the fixed sidebar */
+            padding: 20px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .events-reunion  {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .upcoming-events {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            height: 300px;
+        }
+
+        .create-event {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .event-registration {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #1e4263;
+            margin-bottom: 15px;
+        }
+
+        .invite-image, .event-silhouette {
+            width: 100%;
+            max-width: 455px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .event-date {
+            background-color: #1a3a5c;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .event-date .day {
+            font-size: 24px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .event-date .month {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo">
+            <br><br><br><img src="images/nexuslogo.jpg" alt="Nexus Logo">
+            <br><a href="/dashboard" style="text-decoration: none;">
+                <h2 style="color: white;">NEXUS</h2>
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="/networking"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🤝</i>Networking Hub</a>
+            <br>
+            <a href="/jobportal"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💼</i>Job Portal</a>
+            <br>
+            <a href="/successstory"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📖</i>Success Stories</a>
+            <br>
+            <a href="/alumnidirectory"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📂</i>Alumni Directory</a>
+            <br>
+            <a href="/events"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📅</i>Events & Reunion</a>
+            <br>
+            <a href="/donationportal"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💰</i>Donation Portal</a>
+            <br>
+            <a href="/feedback"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📝</i>Feedback & Survey</a>
+            <div class="log-out">
+                <a href="/logout"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔓</i>Logout</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main content -->
+    <main>
+        <div class="content">
+            <section class="events-reunion">
+                <h2>Events and Reunion</h2>
+                <img src="images/events1.png" alt="You're Invited!" class="invite-image">
+            </section>
+            <section class="event-registration">
+                <h2 style="font-size: 40px;">Event <br>Registration</h2>
+                <form>
+                    <input type="text" placeholder="Full name...">
+                    <input type="tel" placeholder="Phone no...">
+                    <input type="email" placeholder="Email...">
+                    <select>
+                        <option value="">Select Event...</option>
+                        <br>
+                    </select>
+                    <button type="submit">Register</button>
+                </form>
+            </section>
+            <section class="create-event">
+                <h2>Create Event</h2>
+                <div class="image-shadow"><img src="images/events2.png" alt="Event Silhouette" class="event-silhouette"></div>
+                <form id="createEventForm" method="post" action="/Event">
+                    <label for="full_name">Event Name:</label>
+                    <input type="text" id="full_name" name="full_name" required><br><br>
+
+                    <label for="date">Event Date:</label>
+                    <input type="date" id="date" name="date" required><br><br>
+
+                    <label for="time">Event Time:</label>
+                    <input type="time" id="time" name="time" required><br><br>
+
+                    <label for="venue">Venue:</label>
+                    <input type="text" id="venue" name="venue" required><br><br>
+
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required></textarea><br><br>
+
+                    <button type="submit">Create Event</button>
+                </form>
+                <div id="successMessage" style="display:none;color:green;">Your event has been created successfully!</div>
+            </section>
+            <section class="upcoming-events">
+                <h2>Upcoming Events</h2>
+                <div class="event-grid" id="eventGrid">
+                    <div class="event-date"><span class="day">8</span><span class="month">Sept</span></div>
+                    <div class="event-date"><span class="day">14</span><span class="month">Sept</span></div>
+                    <div class="event-date"><span class="day">15</span><span class="month">Sept</span></div>
+                    <div class="event-date"><span class="day">30</span><span class="month">Sept</span></div>
+                    <div class="event-date"><span class="day">2</span><span class="month">Oct</span></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    
+</body>
+</html>

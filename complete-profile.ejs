@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            display: flex;
+            max-width: 1300px;
+            margin: 30px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .left-column {
+            background-color: #3b82f6;
+            padding: 20px;
+            color: white;
+            width: 40%;
+        }
+        .right-column {
+            padding: 20px;
+            width: 60%;
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: block;
+            background-color: #ddd;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .left-column label {
+            color: white;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .section-title {
+            background: linear-gradient(to right, #06b6d4, #3b82f6);
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #2563eb;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .left-column, .right-column {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <img src="images/profile-pic.png" alt="Profile" class="profile-img">
+            <h2>Shruti Keshri</h2>
+            <label for="name">Name:</label>
+            <input type="text" id="name" value="Shruti Negi" readonly>
+            <label for="dob">D.O.B:</label>
+            <input type="text" id="dob" value="11/02/2000">
+            <label for="contactNo">Contact No.:</label>
+            <input type="text" id="contactNo" value="8630318365">
+            <label for="email">Email Id.:</label>
+            <input type="email" id="email" value="shrutinegi@gmail.com">
+            <label for="address">Address:</label>
+            <input type="text" id="address" value="Yamunanagar, Delhi">
+        </div>
+        <div class="right-column">
+            <div class="section-title">Educational Details</div>
+            <label for="stream">Stream:</label>
+            <input type="text" id="stream" value="BBA">
+            <label for="graduationYear">Graduation year:</label>
+            <input type="text" id="graduationYear" value="2021">
+            <label for="collegeName">College Name:</label>
+            <input type="text" id="collegeName" value="BML Munjal University">
+            
+            <div class="section-title">Job Details</div>
+            <label for="jobType">Job Type:</label>
+            <input type="text" id="jobType" value="Full time">
+            <label for="location">Location:</label>
+            <input type="text" id="location" value="Sector 53, Noida">
+            <label for="industry">Industry:</label>
+            <input type="text" id="industry" value="Hero Groups">
+            <label for="experienceLevel">Experience level:</label>
+            <input type="text" id="experienceLevel" value="3 years">
+            
+            <button onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        function submitForm() {
+            const formData = {
+                name: document.getElementById('name').value,
+                dob: document.getElementById('dob').value,
+                contactNo: document.getElementById('contactNo').value,
+                email: document.getElementById('email').value,
+                address: document.getElementById('address').value,
+                stream: document.getElementById('stream').value,
+                graduationYear: document.getElementById('graduationYear').value,
+                collegeName: document.getElementById('collegeName').value,
+                jobType: document.getElementById('jobType').value,
+                location: document.getElementById('location').value,
+                industry: document.getElementById('industry').value,
+                experienceLevel: document.getElementById('experienceLevel').value
+            };
+            console.log('Form submitted:', formData);
+            // Here you would typically send the data to a server
+            alert('Form submitted! Check console for details.');
+        }
+    </script>
+</body>
+</html>

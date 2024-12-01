@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+    <style>
+        .sidebar {
+            position: fixed;
+            right: 610px;
+            width: 250px;
+            background-color: #00224d;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            
+        }
+        
+        .sidebar .logo {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .sidebar .logo img {
+            width: 50px;
+        }
+        
+        .sidebar {
+            
+            position: relative;
+            width: 350px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .nav-links {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #1e4263;
+            border-radius: 30px;
+        }
+        .log-out
+        {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #1e4263;
+        }
+        .sidebar .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        
+        .sidebar .nav-links a i {
+            margin-right: 15px;
+        }
+        
+        .sidebar .nav-links a:hover {
+            background-color: #003366;
+            padding-left: 10px;
+        }
+        
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e5e9f0;
+        }
+        
+        .feedback-modal {
+            background-color: #92b5ea;
+            border-radius: 15px;
+            padding: 20px;
+            height: 500px;
+            width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: fixed;
+            right: 15%;
+            bottom: 7%;
+            margin-top: 100px;
+        }
+        
+        .feedback-header h2 {
+            margin-bottom: 10px;
+            font-size: 20px;
+            color: #333;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .star-rating {
+            margin-bottom: 20px;
+        }
+        
+        .star {
+            font-size: 50px;
+            color: #ccc;
+            cursor: pointer;
+        }
+        
+        .star.selected, .star.hovered {
+            color: #ffcc00;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 230px;
+            border-radius: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        #submit-btn {
+            background-color: #5a67d8;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        #submit-btn:hover {
+            background-color: #434bdb;
+        }
+    </style>
+</head>
+<body>
+    <!-- New Heading -->
+    <div class="headingtitle"><h1 style="text-align: center; padding: 85px 0;color: white; margin: 0; position: absolute; top: 0; left: 55%; transform: translateX(-50%); width:1400px; background-color: #003366;">Feedback Form</h1></div>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo">
+            <br><br><br><img src="images/nexuslogo.jpg" alt="Nexus Logo">
+            <br><a href="/dashboard" style="text-decoration: none;">
+                <h2 style="color: white;">NEXUS</h2>
+            </a>
+        </div>
+        <nav class="nav-links">
+            
+            <a href="/networking"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🤝</i>Networking Hub</a>
+            <br>
+            <a href="/jobportal"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💼</i>Job Portal</a>
+            <br>
+            <a href="successstory"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📖</i>Success Stories</a>
+            <br>
+            <a href="/alumnidirectory"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📂</i>Alumni Directory</a>
+            <br>
+            <a href="/events"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📅</i>Events & Reunion</a>
+            <br>
+            <a href="/donationportal"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💰</i>Donation Portal</a>
+            <br>
+            <a href="/feedback"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📝</i>Feedback & Survey</a>
+            <div class="log-out">
+                <a href="/logout"><i class="icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔓</i>Logout</a>
+            </div>
+        </nav>
+    </div>
+    
+    <!-- Main Content -->
+    
+    <div class="feedback-modal" >
+        <div class="feedback-header">
+            <h2>We appreciate your feedback</h2>
+        </div>
+        <p>We are always looking for ways to improve your experience. Please take a moment to evaluate and tell us what you think.</p>
+        
+        <div class="star-rating">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        
+        <textarea id="feedback-text" placeholder="What can we do to improve your experience?"></textarea>
+        
+        <button id="submit-btn">Submit My Feedback</button>
+    </div>
+    
+    
+</body>
+</html>

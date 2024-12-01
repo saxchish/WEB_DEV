@@ -1,0 +1,14 @@
+{
+    "placeholders": {
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "mobileNumber": "Mobile Number",
+      "stream": "Stream",
+      "graduationYear": "Graduation Year",
+      "company": "Company"
+    },
+    "formAction": "/login",
+    "dashboardRedirect": "/Dashboard",
+    "signinRedirect": "/signin"
+  }
+  

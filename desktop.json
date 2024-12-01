@@ -1,0 +1,105 @@
+{
+    "html": {
+      "head": {
+        "meta": [
+          { "charset": "utf-8" },
+          { "name": "viewport", "content": "initial-scale=1, width=device-width" }
+        ],
+        "links": [
+          { "rel": "stylesheet", "href": "./desktop.css" },
+          { "rel": "stylesheet", "href": "./desktop3.css" },
+          { "rel": "stylesheet", "href": "https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap" },
+          { "rel": "stylesheet", "href": "https://fonts.googleapis.com/css2?family=Inter:wght@200;700&display=swap" },
+          { "rel": "stylesheet", "href": "https://fonts.googleapis.com/css2?family=Prata:wght@400&display=swap" }
+        ],
+        "style": {
+          "global": {
+            "scrollBehavior": "smooth",
+            "fontFamily": "Arial, sans-serif",
+            "margin": "0",
+            "padding": "0"
+          },
+          "container": {
+            "maxWidth": "1000px",
+            "margin": "0 auto",
+            "padding": "20px",
+            "position": "relative"
+          },
+          "header": {
+            "display": "flex",
+            "alignItems": "center",
+            "justifyContent": "space-between",
+            "height": "80px"
+          },
+          "alumniGrid": {
+            "display": "flex",
+            "justifyContent": "space-around",
+            "flexWrap": "wrap"
+          },
+          "alumniCard": {
+            "backgroundColor": "#F2E2C9",
+            "borderRadius": "30px",
+            "width": "250px",
+            "textAlign": "center"
+          },
+          "heroImage": {
+            "width": "100%",
+            "height": "750px",
+            "backgroundImage": "url('images/college.png')",
+            "backgroundSize": "cover"
+          },
+          "form": {
+            "maxWidth": "500px",
+            "margin": "0 auto",
+            "padding": "20px",
+            "background": "#f9f9f9"
+          }
+        }
+      },
+      "body": {
+        "header": {
+          "logo": { "src": "images/Untitled_design__1_-removebg-preview.png", "alt": "Nexus Logo", "height": "80px" },
+          "nav": ["Home", "About Us", "Features", "Contact"],
+          "buttons": [
+            { "type": "sign-in", "href": "/signin", "label": "Sign In" },
+            { "type": "sign-up", "href": "/signup", "label": "Sign Up" }
+          ]
+        },
+        "hero": {
+          "class": "hero-image",
+          "id": "1stpage"
+        },
+        "features": [
+          { "title": "Connect Instantly", "icon": "images/1st_logo.png", "description": "Lorem ipsum dolor sit amet" },
+          { "title": "Donation Portal", "icon": "images/2nd_logo.png", "description": "Lorem ipsum dolor sit amet" },
+          { "title": "Job Portal", "icon": "images/3rd_logo.png", "description": "Lorem ipsum dolor sit amet" },
+          { "title": "Success Story", "icon": "images/4th_logo.png", "description": "Lorem ipsum dolor sit amet" }
+        ],
+        "alumni": {
+          "title": "Top Alumni",
+          "profiles": [
+            { "name": "Abhijeet K. Tiwari", "role": "Software Engineer at TCS", "image": "images/t1.png" },
+            { "name": "Sachin Singh", "role": "Software Engineer at Google", "image": "images/t3.jpg" },
+            { "name": "Shruti Keshri", "role": "Software Engineer at HP", "image": "images/t2.png" }
+          ]
+        },
+        "banner": { "src": "images/ban.png", "alt": "Banner Image" },
+        "additionalContent": [
+          { "id": "2ndpage", "image": "images/abu.jpg" },
+          { "id": "3rdpage", "image": "images/features.png" }
+        ],
+        "contact": {
+          "title": "Contact Us",
+          "form": {
+            "fields": [
+              { "type": "text", "name": "full_name", "placeholder": "Full Name" },
+              { "type": "email", "name": "email", "placeholder": "E-mail" },
+              { "type": "textarea", "name": "message", "placeholder": "Message" }
+            ],
+            "submit": { "type": "button", "label": "Submit" }
+          }
+        }
+      }
+    }
+  }
+  
